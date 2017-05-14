@@ -4,37 +4,13 @@ import * as G from 'grommet';
 // import App from 'grommet/components/App';
 import './App.css';
 
-class App extends Component {
-  render () {
-    return (
-      <G.App pad='large'
-        justify='center'>
-        <G.Article pad='large'
-          justify='center'>
-          {/*<G.Section>
-            <G.Headline>
-              <G.Title>Hello World</G.Title>
-            </G.Headline>
-          </G.Section>*/}
-          <G.Section>
-            {/*<G.Paragraph>Hello from a Grommet page!</G.Paragraph>
-            <G.Paragraph>Now, head back to the <a href="https://github.io/docs/hello-world/">Hello World</a> guide to continue your Grommet exploration.</G.Paragraph>*/}
-              <ShoppingList name="Bazaar" list={["Rice", "Sugar", "Milk"]}/>,
-          </G.Section>
-        </G.Article>
-      </G.App>
-    );
-  }
-}
-
-
 
 /**
  * ShoppingList component.
  * @param {string} name of the list
  * @param {list} list of items
  */
-class ShoppingList extends Component {
+/*class ShoppingList extends Component {
   render() {
     return (
       <G.Section className="Shopping-List">
@@ -47,6 +23,36 @@ class ShoppingList extends Component {
       </G.Section>
     );
   }
+}*/
+
+
+class Square extends Component {
+  render() {
+    return (
+      <G.Button icon={<G.Edit />}
+        label={this.props.value}
+        onClick={() => alert('click')}
+        primary={true} />
+    )
+  }
 }
 
+
+// Main App
+class App extends Component {
+  render () {
+    return (
+      <G.App pad='large'
+        justify='center'>
+        <G.Article pad='large'
+          justify='center'>
+          <G.Section>
+              {/*<ShoppingList name="Bazaar" list={["Rice", "Sugar", "Milk"]}/>*/}
+              <Square/>
+          </G.Section>
+        </G.Article>
+      </G.App>
+    );
+  }
+}
 export default App ;
