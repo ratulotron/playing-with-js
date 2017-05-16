@@ -1,39 +1,56 @@
 import React, { Component } from 'react';
-import * as G from 'grommet';
+// import * as G from 'grommet';
 // import Title from 'grommet/components/Title';
 // import App from 'grommet/components/App';
 import './App.css';
-
 
 /**
  * ShoppingList component.
  * @param {string} name of the list
  * @param {list} list of items
  */
-/*class ShoppingList extends Component {
+class ShoppingList extends Component {
   render() {
     return (
-      <G.Section className="Shopping-List">
+      <div className="ShoppingList">
         <h1>Shopping List for {this.props.name}</h1>
-        <G.List>
+        <ul>
           {this.props.list.map((item) =>
-          <G.ListItem>{item}</G.ListItem>
+          <li>{item}</li>
           )}
-        </G.List>
-      </G.Section>
+        </ul>
+      </div>
     );
   }
-}*/
+}
 
 
 class Square extends Component {
   render() {
     return (
-      <G.Button icon={<G.Edit />}
+      /*<G.Button icon={<G.Edit />}
         label={this.props.value}
         onClick={() => alert('click')}
-        primary={true} />
+        primary={true} />*/
+      <button // icon={<G.Edit />}
+        label={this.props.name}
+        onClick={() => alert('Hi!')}
+        //primary={true} 
+        >
+        Say hi!
+        </button>
     )
+  }
+}
+
+class Box extends Component {
+  render () {
+    let S = `
+    height: 100px;
+    width: 100px;
+    background: ${this.props.color}
+    `;
+    return <div className="insideContent" style={S}></div>
   }
 }
 
@@ -42,17 +59,12 @@ class Square extends Component {
 class App extends Component {
   render () {
     return (
-      <G.App pad='large'
-        justify='center'>
-        <G.Article pad='large'
-          justify='center'>
-          <G.Section>
-              {/*<ShoppingList name="Bazaar" list={["Rice", "Sugar", "Milk"]}/>*/}
-              <Square/>
-          </G.Section>
-        </G.Article>
-      </G.App>
+      <div className="App">
+        <Square name={"Say hi!"} />
+        <ShoppingList name="Bazaar" list={["daal", "chaal", "ata"]} />
+        {/*<Box color={"red"} />*/}
+      </div>
     );
   }
 }
-export default App ;
+export default App;
