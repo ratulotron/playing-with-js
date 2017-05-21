@@ -1,13 +1,31 @@
 import React, { Component } from 'react';
-// import * as G from 'grommet';
-// import Title from 'grommet/components/Title';
-// import App from 'grommet/components/App';
 import './App.css';
 
 class Square extends Component {
+  // React components can have state by setting this.state in the constructor, 
+  // which should be considered private to the component. Let's store the current value 
+  // of the square in state, and change it when the square is clicked.
+  // In JavaScript classes, you need to explicitly call super(); 
+  // when defining the constructor of a subclass.
+
+
+  constructor() {
+    super();
+    this.state = {
+      value: null,
+    }
+  }
+
   render() {
     return (
-      <button className="square">
+      <button className="square" onClick={() => {
+        if(this.state.value === 'X') {
+          this.setState({value: 'Y'})
+        } else {
+          this.setState({value: 'X'})
+        } 
+        console.log(this.state.value)
+        }}>
         {this.props.value}
       </button>
     )
