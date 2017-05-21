@@ -4,67 +4,60 @@ import React, { Component } from 'react';
 // import App from 'grommet/components/App';
 import './App.css';
 
-/**
- * ShoppingList component.
- * @param {string} name of the list
- * @param {list} list of items
- */
-class ShoppingList extends Component {
-  render() {
-    return (
-      <div className="ShoppingList">
-        <h1>Shopping List for {this.props.name}</h1>
-        <ul>
-          {this.props.list.map((item) =>
-          <li>{item}</li>
-          )}
-        </ul>
-      </div>
-    );
-  }
-}
-
-
 class Square extends Component {
   render() {
     return (
-      /*<G.Button icon={<G.Edit />}
-        label={this.props.value}
-        onClick={() => alert('click')}
-        primary={true} />*/
-      <button // icon={<G.Edit />}
-        label={this.props.name}
-        onClick={() => alert('Hi!')}
-        //primary={true} 
-        >
-        Say hi!
-        </button>
+      <button className="square">
+        {this.props.value}
+      </button>
     )
   }
 }
 
-class Box extends Component {
-  render () {
-    let S = `
-    height: 100px;
-    width: 100px;
-    background: ${this.props.color}
-    `;
-    return <div className="insideContent" style={S}></div>
+class Board extends Component {
+  renderSquare(i) {
+    return <Square value={i} />
   }
-}
 
-
-// Main App
-class App extends Component {
   render () {
+    const status = 'Next player: X';
     return (
       <div className="App">
-        <Square name={"Say hi!"} />
-        <ShoppingList name="Bazaar" list={["daal", "chaal", "ata"]} />
-        {/*<Box color={"red"} />*/}
+        <div className="status">{status}</div>
+        <div className="board-row">
+          {this.renderSquare(0)}
+          {this.renderSquare(1)}
+          {this.renderSquare(2)}
+        </div>
+        <div className="board-row">
+          {this.renderSquare(3)}
+          {this.renderSquare(4)}
+          {this.renderSquare(5)}
+        </div>
+        <div className="board-row">
+          {this.renderSquare(6)}
+          {this.renderSquare(7)}
+          {this.renderSquare(8)}
+        </div>
       </div>
     );
   }
 }
-export default App;
+
+// Main App
+class Game extends Component {
+  render () {
+    return (
+      <div className="game">
+        <div className="game-board">
+          <Board />
+        </div>
+        <div className="game-info">
+          <div>{/* status */}</div>
+          <ol>{/* TODO */}</ol>
+        </div>
+      </div>
+    );
+  }
+}
+export default Game;
