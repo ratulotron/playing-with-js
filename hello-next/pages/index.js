@@ -1,24 +1,26 @@
-// import Link from 'next/link'
-// import Header from '../components/Header'
-
 // pages/index.js
 
 import Layout from '../components/MyLayout.js'
+import Link from 'next/link'
 
-export default () => (
-    <Layout>
-       <p>Hello Next.js</p>
-    </Layout>
+
+// Component for each post link
+const PostLink = (props) => (
+  <li>
+    <Link href={`/post?title=${props.title}`}>
+      <a>{props.title}</a>
+    </Link>
+  </li>
 )
 
-// const Index = () => (
-//   <div>
-//     {/*<Link href="/about">
-//       <a>About Page</a>
-//     </Link>*/}
-//     <Header />
-//     <p>Hello Next.js</p>
-//   </div>
-// )
 
-// export default Index
+export default () => (
+  <Layout>
+    <h1>My Blog</h1>
+    <ul>
+      <PostLink title="Hello Next.js"></PostLink>
+      <PostLink title="Learn Next.js is awesome"></PostLink>      
+      <PostLink title="Deploy apps with Zeit"></PostLink>
+    </ul>
+  </Layout>
+)
