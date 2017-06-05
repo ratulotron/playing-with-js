@@ -1,8 +1,21 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 # Created by https://www.gitignore.io/api/node
 
 ### Node ###
+=======
+.DS_Store
+node_modules/
+dist/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+test/unit/coverage
+test/e2e/reports
+selenium-debug.log
+
+>>>>>>> vue/master
 # Logs
 logs
 *.log
@@ -61,6 +74,7 @@ typings/
 
 # dotenv environment variables file
 .env
+<<<<<<< HEAD
 
 <<<<<<< HEAD
 # Node libraries
@@ -114,3 +128,5 @@ testem.log
 .DS_Store
 Thumbs.db
 >>>>>>> angular/master
+=======
+>>>>>>> vue/master
