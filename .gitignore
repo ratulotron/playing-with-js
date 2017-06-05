@@ -61,8 +61,11 @@ typings/
 # dotenv environment variables file
 .env
 
+<<<<<<< HEAD
 # Node libraries
 .next/
 
+=======
+>>>>>>> nodejs/master
 
 # End of https://www.gitignore.io/api/node
