@@ -1,0 +1,10 @@
+{
+    "cordova-plugin-logtofile": {
+        "source": {
+            "type": "registry",
+            "id": "cordova-plugin-logtofile"
+        },
+        "is_top_level": true,
+        "variables": {}
+    }
+}
