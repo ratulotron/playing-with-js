@@ -3,10 +3,15 @@
     <feature name="LogToFile">
         <param name="android-package" value="org.apache.cordova.logtofile.LogToFile" />
     </feature>
+    <feature name="Whitelist">
+        <param name="android-package" value="org.apache.cordova.whitelist.WhitelistPlugin" />
+        <param name="onload" value="true" />
+    </feature>
     <name>vue-list</name>
     <description />
     <author />
     <access origin="*" />
+    <allow-navigation href="http://*/*" />
     <content src="index.html" />
     <preference name="ErrorUrl" value="" />
     <icon density="ldpi" src="/res/android/icon/ldpi.png" />

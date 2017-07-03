@@ -4,6 +4,7 @@
     <description />
     <author />
     <access origin="*" />
+    <allow-navigation href="http://*/*" />
     <content src="index.html" />
     <preference name="loglevel" value="DEBUG" />
     <preference name="AndroidLaunchMode" value="singleTop" />
@@ -100,4 +101,6 @@
         <icon height="128" src="/platforms/chrome/icon.png" width="128" />
     </platform>
     <engine name="android" spec="^6.2.3" />
+    <engine name="ios" spec="^4.4.0" />
+    <plugin name="cordova-plugin-whitelist" spec="^1.3.2" />
 </widget>
