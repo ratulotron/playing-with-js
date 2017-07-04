@@ -28,9 +28,15 @@ export default class App extends React.Component {
         this.setState({
           todos: response.data
         });
+        console.log(this.state.todos);
       })
       .catch((error) => {
-        console.log(error);
+        if (error.response) {
+          this.setState({
+            todos: [error.response.data.error]
+          });
+          console.log(error);
+        }
       });
 }
 
@@ -54,7 +60,7 @@ export default class App extends React.Component {
   render() {
     return (
       <Page renderToolbar={this.renderToolbar}>
-        <Todos list={["Ratul"]} />
+        <Todos list={this.state.todos} />
       </Page>
     );
   }
