@@ -29,6 +29,8 @@
   import nav1 from './Nav1';
   import nav2 from './Nav2';
 
+  import store from './store'
+
   export default {
     data() {
       return {
@@ -41,6 +43,10 @@
       alert() {
         this.$ons.notification.alert('This is an Onsen UI alert notification test.');
       }
+    },
+    mounted: function () {
+      store.commit('change', this.pageStack)
+      alert("APP: Beginning: " + this.$store.state.pageStack.length)
     }
   };
 

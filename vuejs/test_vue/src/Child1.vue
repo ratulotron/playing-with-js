@@ -1,31 +1,62 @@
 <template>
-        <v-ons-page>
-          <splitter-toolbar :title="'Home'" :action="toggleMenu"></splitter-toolbar>
-          <p style="text-align: center">
-Child 1          </p>
-        </v-ons-page>
-    </template>
-    
-    <script>
-      import splitterToolbar from './components/splitter_toolbar'
-      export default {
+    <v-ons-page>
+        <splitter-toolbar :title="'Home'" :action="toggleMenu"></splitter-toolbar>
+        <p style="text-align: center">
+            Child 1          </p>
+        <div style="text-align: center; padding-top:10px">Go to sister page!</div>
+        <p style="text-align: center">
+            <v-ons-button @click="push">Push Page 3</v-ons-button>
+        </p>
+    </v-ons-page>
+</template>
 
-        data() {
-          return {
-            // pageStack: this.prototype.$pageStack
-          }
-        },
-        props: [
-          'toggleMenu', 
-          'pageStack',
-          ],
-        // props: ['pageStack'],
+<script>
+  import splitterToolbar from './components/splitter_toolbar'
+  import nav3 from './Nav3';
+  import child1 from './Child1';
 
-        components: { splitterToolbar },
-        mounted: function() {
-          console.log("Inside Child1")
-            console.log(this.pageStack)
-        }
+  export default {
+
+    data() {
+      return {
+        //pageStack: this.$store.state.pageStack
       }
-    </script>
+    },
+    props: [
+      'toggleMenu',
+      //'pageStack',
+    ],
+
+    components: {splitterToolbar},
+
+    methods: {
+      alert() {
+
+        this.$ons.notification.alert('This is an Onsen UI alert notification test.');
+      },
+      // Mandatory for pageStack
+      pop() {
+        var pages = this.$store.state.pageStack;
+        this.$store.commit('change', pages.slice(0,pages.length))
+        alert("CHILD1: After POPPING: " + pages.length)
+      },
+      push() {
+        var pages = this.$store.state.pageStack;
+//        alert("Pressed PUSH")
+//        pages.push(child1)
+//        alert("CHILD1: Added CHILD1: " + this.$store.state.pageStack.length)
+        pages.push(nav3)
+        // alert("CHILD1: Added NAV3: " + this.$store.state.pageStack.length)
+        this.$store.commit('change', pages);
+        alert("CHILD1: After pressing push: " + this.$store.state.pageStack.length)
+      }
+    },
+    mounted: function () {
+      // this.pageStack = this.$store.state.pageStack
+
+
+      // alert("From CHILD1, in data.pageStack: " + this.pageStack)
+    }
+  }
+</script>
     

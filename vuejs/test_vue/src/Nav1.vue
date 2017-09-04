@@ -17,6 +17,7 @@
         <div style="text-align: center; padding-top:10px">Go to sister page!</div>        
         <p style="text-align: center">
             <v-ons-button @click="push">Push Page 2</v-ons-button>
+
         </p>
     </v-ons-page>
 </template>
@@ -36,10 +37,14 @@
             },
             // Mandatory for pageStack
             pop() {
-                this.pageStack.pop();
+//              alert(this.pageStack.length)
+//              this.$store.commit('change', this.pageStack.slice(0,this.pageStack.length))
+//              this.pageStack.pop();
             },
             push() {
                 this.pageStack.push(nav2);
+                alert("NAV1: After pressing push: " + this.pageStack.length)
+                this.$store.commit('change', this.pageStack);
             }
         },
         props: ['pageStack'],

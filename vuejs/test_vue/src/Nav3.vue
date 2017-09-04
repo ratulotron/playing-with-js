@@ -8,7 +8,10 @@
                     </v-ons-toolbar-button>
                 </div>
             </v-ons-toolbar> -->
-            <div style="text-align: center; padding-top:10px">Go to sister page!</div>        
+            <div style="text-align: center; padding-top:10px">Go to sister page!</div>
+            <p style="text-align: center">
+                Nav 3
+            </p>
             <p style="text-align: center">
                     <v-ons-button @click="pop">Back to Page 2</v-ons-button>
                     <v-ons-button @click="top">Back to Main</v-ons-button>
@@ -37,7 +40,10 @@
                 }
             },
             props: ['pageStack'],
-            components: { customToolbar }
+            components: { customToolbar },
+            mounted() {
+              alert("NAV3: Inside: " + this.pageStack.length )
+            }
         }
     
     </script>
