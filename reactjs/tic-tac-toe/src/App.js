@@ -1,40 +1,39 @@
 import React, { Component } from 'react';
 import './App.css';
 
-class Square extends Component {
-  // React components can have state by setting this.state in the constructor, 
-  // which should be considered private to the component. Let's store the current value 
-  // of the square in state, and change it when the square is clicked.
-  // In JavaScript classes, you need to explicitly call super(); 
-  // when defining the constructor of a subclass.
+function Square(props) {
+  return (
+    <button className="square" 
+      onClick={() => props.onClick()}>
+      {props.value}
+    </button>
+  )
 
-
-  constructor() {
-    super();
-    this.state = {
-      value: null,
-    }
-  }
-
-  render() {
-    return (
-      <button className="square" onClick={() => {
-        if(this.state.value === 'X') {
-          this.setState({value: 'Y'})
-        } else {
-          this.setState({value: 'X'})
-        } 
-        console.log(this.state.value)
-        }}>
-        {this.props.value}
-      </button>
-    )
-  }
 }
 
+
 class Board extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      squares: Array(9).fill(null),
+    };
+  }
+
+  handleClick(i) {
+    const squares = this.state.squares.slice();
+    squares[i] = 'X';
+    this.setState({squares: squares});
+    console.log(JSON.stringify(this.state, null, "\t"));
+  }
+
   renderSquare(i) {
-    return <Square value={i} />
+    return (
+      <Square 
+        value={this.state.squares[i]} 
+        onClick={() => this.handleClick(i)}
+      />
+    )
   }
 
   render () {
