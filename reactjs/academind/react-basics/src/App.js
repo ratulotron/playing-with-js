@@ -5,9 +5,25 @@ import { User } from './components/User'
 import './App.css';
 
 class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      homeLink: "Home"
+    };
+  }
+  onGreet() {
+    alert("Hello?")
+  }
+
+  onChangeLinkName(newName) {
+    this.setState({
+      homeLink: newName,
+    })
+  }
 
   users = [
-    { name: "Ratul" }
+    { name: "Ratul", age: 12 },
+    { name: "Raiyaan", age: 4 }
   ]
 
   render() {
@@ -15,17 +31,25 @@ class App extends Component {
       <div className='container'>
         <div className="row">
           <div className="col-xs-10 col-xs-offset-1">
-            <Header />
+            <Header homeLink={this.state.homeLink} />
           </div>
         </div>
         <div className="row">
           <div className="col-xs-10 col-xs-offset-1">
-            <Home />
+            <Home status={1} />
           </div>
         </div>
         <div className="row">
           <div className="col-xs-10 col-xs-offset-1">
-            {this.users.map((user, index) => <User name={user.name} key={index} />)}
+            {this.users.map((user, index) =>
+              <User
+                name={user.name}
+                age={user.age}
+                greet={this.onGreet}
+                changeLink={this.onChangeLinkName.bind(this)}
+                initialLinkName={this.state.homeLink}
+                key={index} />
+            )}
           </div>
         </div>
 
